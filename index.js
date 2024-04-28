@@ -21,7 +21,11 @@ app.get("/jokes/:id/", (req, res) => {
 })
 
 //GET filtered by type
-
+app.get("/filter", (req,res) => {
+  let type = (req.query.type).toLowerCase();
+  let filteredJokes = jokes.filter((joke) => joke.jokeType.toLowerCase() == type);
+  res.json(filteredJokes);
+})
 
 
 app.listen(port, () => {
